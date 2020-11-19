@@ -10,6 +10,9 @@ from django.views.generic import *
 class PollList(ListView):
     model = Poll
 
+class PollRedirect(RedirectView):
+    def get_redirect_url(self, *args, **kwargs):
+        return 'poll'
 
 class PollDetail(DetailView):
     model = Poll
@@ -32,3 +35,28 @@ class PollCreate(CreateView):
     model = Poll
     fields = ['subject', 'description']
     success_url = '/poll/'
+
+
+
+class PollEdit(UpdateView):
+    model = Poll
+    fields = '__all__'
+    success_url = '/poll/'
+
+
+class PollDelete(DeleteView):
+    model = Poll
+    success_url = '/poll/'
+
+
+
+class OptionAdd(CreateView):
+    model = Option
+    fields = ['title']
+
+    def get_success_url(self):
+        return "/poll/{}/" .format(self.kwargs['pk'])
+    
+    def form_valid(self, form):
+        form.instance.poll_id = self.kwargs['pk']
+        return super().form_valid(form)
