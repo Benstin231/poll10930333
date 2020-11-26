@@ -3,7 +3,7 @@
 
 {% block content %}
   <h1>{{ object.title }}</h1>
-  <h2>確定要刪除此投票主題?</h2>
+  <h2>確定要刪除此投票選項?</h2>
   <form action="" method="post">
       {% csrf_token %}
       <input type="submit" value="確認刪除">

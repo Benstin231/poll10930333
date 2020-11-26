@@ -7,7 +7,9 @@
     <ul>
         {% for poll in poll_list %}
         <li>
-          {{ poll.date_create }} - <a href="{{ poll.id }}/">{{ poll.subject }}</a> | <a href="/poll/{{ poll.id }}/edit">修改</a> | <a href="/poll/{{ poll.id }}/delete">刪除</a>
+          {{ poll.date_create }} - <a href="{{ poll.id }}/">{{ poll.subject }}</a> 
+          | <a href="/poll/{{ poll.id }}/edit">修改</a> 
+          | <a href="/poll/{{ poll.id }}/delete">刪除</a>
         </li> 
         {% endfor %}
     </ul>
